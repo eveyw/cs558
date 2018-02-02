@@ -3,8 +3,8 @@
 Name: Wen Yang
 Email: wyang41@binghamton.edu
 
-Name:
-Email:
+Name: Jieying Zhou
+Email: jzhou86@binghamton.edu
 
 
 2)Whether the code was tested on bingsuns:
