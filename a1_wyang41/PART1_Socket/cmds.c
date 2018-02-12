@@ -94,13 +94,26 @@ char *cmd_404(char *cmd)
 char *cmd_process(char *cmdline)
 {
 	char cmd[30], param[70];
+	static char buf[100];
+	int ret;
 	bzero(cmd, 30);
 	bzero(param, 70);
-	sscanf(cmdline, "%s %s", cmd, param);
+	ret = sscanf(cmdline, "%s %s", cmd, param);
+	
 	if (strcmp(cmd, "ls") == 0){
-		return cmd_ls();
+		if (ret == 1){
+			return cmd_ls();
+		} else {
+			sprintf(buf, "invalid command `%s`\n", cmdline);
+			return buf;
+		}
 	} else if (strcmp(cmd, "pwd") == 0){
-		return cmd_pwd();
+		if (ret == 1){
+			return cmd_pwd();
+		} else {
+			sprintf(buf, "invalid  command `%s`\n", cmdline);
+			return buf;
+		}
 	} else if (strcmp(cmd, "mkdir") == 0){
 		return cmd_mkdir(param);
 	} else if (strcmp(cmd, "rmdir") == 0){
